@@ -4,17 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project</title>
+    <title>CounterApp</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container pt-5" id="app">
-        <div class="card center">
-            <h1>{{ title }}: {{ counter }}</h1>
-            <div>
-                <button class="btn primary" v-on:click="counter++">Add</button>
-                <button class="btn danger" v-on:click="counter = counter - 1">Truncate</button>
+        <div class="card">
+            <h1>{{ title }}</h1>
+            <div class="form-control">
+                <input type="text" 
+                v-bind:placeholder="placeholderString" 
+                v-bind:value="inputValue"
+                v-on:input="inputChangeHandler"
+                />
             </div>
+            <h2>inputValue: {{ inputValue }} </h2>
+            <button class="btn" v-on:click="addNewNote">Add</button>
+            <hr/>
+            <ul class="list">
+                <li class="list-item" v-for="myNote in notes">
+                    {{ myNote }}
+                </li>
+            </ul>
         </div>
     </div>
     <script src="https://unpkg.com/vue@next"></script>
